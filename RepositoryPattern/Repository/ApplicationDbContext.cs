@@ -10,6 +10,7 @@ namespace RepositoryPattern.Repository
 {
     public class ApplicationDbContext : DbContext
     {
+        public DbSet<Employee> Employees { get; set; }
         public ApplicationDbContext() : base("SampleDB")
         {
 

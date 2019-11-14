@@ -9,7 +9,7 @@ namespace RepositoryPattern.Repository.Interface
     {
         TEntity GetById(int id);
         IQueryable<TEntity> GetAll();
-        void Edit(TEntity entity);
+        void Update(TEntity entity);
         void Insert(TEntity entity);
         void Delete(TEntity entity);
     }

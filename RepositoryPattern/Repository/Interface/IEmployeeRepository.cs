@@ -14,5 +14,6 @@ namespace RepositoryPattern.Repository
         Employee GetEmployee(int Id);
         void AddEmployee(Employee employee);
         void DeleteEmployee(Employee employee);
+        void UpdateEmployee(Employee employee);
     }
 }

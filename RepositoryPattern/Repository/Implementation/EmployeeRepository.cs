@@ -21,7 +21,7 @@ namespace RepositoryPattern.Repository.Implementation
         /// <returns></returns>
         public IEnumerable<Employee> GetEmployees()
         {
-            return GetAll();
+            return GetAll().ToList();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace RepositoryPattern.Repository.Implementation
 
         public void UpdateEmployee(Employee employee)
         {
-            Edit(employee);
+            Update(employee);
         }
     }
 }

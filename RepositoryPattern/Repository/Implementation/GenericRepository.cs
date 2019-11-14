@@ -34,8 +34,9 @@ namespace RepositoryPattern.Repository.Implementation
         }
 
 
-        public void Edit(TEntity entity)
+        public void Update(TEntity entity)
         {
+            dbset.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
         }
 

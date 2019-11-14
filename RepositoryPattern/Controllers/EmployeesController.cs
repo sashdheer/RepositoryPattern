@@ -113,7 +113,7 @@ namespace RepositoryPattern.Controllers
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(EmployeeViewModel employeeViewModel)
+        public ActionResult Edit(EmployeeViewModel employeeViewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -128,6 +128,7 @@ namespace RepositoryPattern.Controllers
             employee.CreatedBy = employeeViewModel.CreatedBy;
             employee.ModifiedBy = employeeViewModel.ModifiedBy;
 
+            _unitOfWork.Employees.UpdateEmployee(employee);
             _unitOfWork.Complete();
             return RedirectToAction("Index", "Employees");
         }
