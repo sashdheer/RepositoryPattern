@@ -134,12 +134,13 @@ namespace RepositoryPattern.Controllers
         }
 
         // GET: Employees/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             Employee employee = _unitOfWork.Employees.GetEmployee(id);
             _unitOfWork.Employees.DeleteEmployee(employee);
             _unitOfWork.Complete();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Employees");
 
         }
     }
