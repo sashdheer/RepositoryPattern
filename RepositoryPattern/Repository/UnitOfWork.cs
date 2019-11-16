@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using RepositoryPattern.Models;
 using RepositoryPattern.Repository.Implementation;
+using RepositoryPattern.ViewModel;
 
 namespace RepositoryPattern.Repository
 {

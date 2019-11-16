@@ -31,7 +31,6 @@ namespace RepositoryPattern.DependencyResolution {
                 });
             //For<IExample>().Use<Example>();
             For<Repository.IEmployeeRepository>().Use<Repository.Implementation.EmployeeRepository>();
-
         }
 
         #endregion

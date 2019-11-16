@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using RepositoryPattern.Models;
+using RepositoryPattern.ViewModel;
 
 namespace RepositoryPattern.Repository.Implementation
 {

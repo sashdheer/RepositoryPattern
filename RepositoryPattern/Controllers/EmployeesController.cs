@@ -7,7 +7,8 @@ using System.Collections.Generic;
 namespace RepositoryPattern.Controllers
 {
    
-    public class EmployeesController : Controller
+   [Authorize]
+   public class EmployeesController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -18,6 +19,7 @@ namespace RepositoryPattern.Controllers
 
 
         // GET: Employees
+        [Authorize]
         public ActionResult Index()
         {
             var employees = _unitOfWork.Employees.GetEmployees();

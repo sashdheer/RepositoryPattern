@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using RepositoryPattern.Repository.Interface;
+using RepositoryPattern.ViewModel;
 
 namespace RepositoryPattern.Repository.Implementation
 {
