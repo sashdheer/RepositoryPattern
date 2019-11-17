@@ -19,7 +19,7 @@ namespace RepositoryPattern.Controllers
 
 
         // GET: Employees
-        [Authorize]
+        [Route("Employees/Index")]
         public ActionResult Index()
         {
             var employees = _unitOfWork.Employees.GetEmployees();
