@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using RepositoryPattern.Models;
+﻿using RepositoryPattern.Models;
 using RepositoryPattern.Repository.Implementation;
-using RepositoryPattern.ViewModel;
+using RepositoryPattern.Repository.Interface;
 
 namespace RepositoryPattern.Repository
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SampleDBEntities _context;
 
         public IEmployeeRepository Employees { get; private set; }
+        public IDepartmentRepository Departments { get; private set; }
 
-        public UnitOfWork(ApplicationDbContext context)
+        public UnitOfWork(SampleDBEntities context)
         {
             _context = context;
             Employees = new EmployeeRepository(context);
+            Departments = new DepartmentRepository(context);
         }
 
         public void Complete()

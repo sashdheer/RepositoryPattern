@@ -1,8 +1,9 @@
-﻿using RepositoryPattern.Models;
+﻿using RepositoryPattern.Repository;
 using System.Web.Mvc;
 using RepositoryPattern.ViewModel;
 using System.Collections.Generic;
-
+using RepositoryPattern.Models;
+using System.Linq;
 
 namespace RepositoryPattern.Controllers
 {
@@ -23,8 +24,9 @@ namespace RepositoryPattern.Controllers
         public ActionResult Index()
         {
             var employees = _unitOfWork.Employees.GetEmployees();
+         
             var viewModel = AutoMapper.Mapper.Map<IEnumerable<Employee>,IEnumerable<EmployeeViewModel>>(employees);
-           
+                       
             return View(viewModel);
         }
 
@@ -63,6 +65,10 @@ namespace RepositoryPattern.Controllers
                 Heading = "New Employee"
             };
 
+            IEnumerable<Department> departments = _unitOfWork.Departments.GetDepartments();
+            var deptList = new SelectList(departments.Select(dept => new { DeptId = dept.DeptId, Name = dept.Name }), "DeptId", "Name").ToList();
+            employeeViewModel.DepartmentList = deptList;
+
             return View("Create", employeeViewModel);
         }
 
@@ -82,7 +88,8 @@ namespace RepositoryPattern.Controllers
                 LastName = employeeViewModel.LastName,
                 SSN = employeeViewModel.SSN,
                 CreatedBy = employeeViewModel.CreatedBy,
-                ModifiedBy = employeeViewModel.ModifiedBy
+                ModifiedBy = employeeViewModel.ModifiedBy,
+                DeptId = employeeViewModel.DeptId
             };
             _unitOfWork.Employees.AddEmployee(employee);
             _unitOfWork.Complete();
@@ -98,6 +105,10 @@ namespace RepositoryPattern.Controllers
                 return HttpNotFound();
             }
 
+            IEnumerable<Department> departments = _unitOfWork.Departments.GetDepartments();
+            var deptList = new SelectList(departments.Select(dept => new { DeptId = dept.DeptId, Name = dept.Name }), "DeptId", "Name").ToList();
+            
+
             var employeeViewModel = new EmployeeViewModel
             {
                 Heading = "Edit Employee",
@@ -106,8 +117,9 @@ namespace RepositoryPattern.Controllers
                 LastName = employee.LastName,
                 SSN = employee.SSN,
                 CreatedBy = employee.CreatedBy,
-                ModifiedBy = employee.ModifiedBy
-            };
+                ModifiedBy = employee.ModifiedBy,
+                DepartmentList = deptList
+        };
             return View("Edit", employeeViewModel);
         }
 
@@ -129,6 +141,7 @@ namespace RepositoryPattern.Controllers
             employee.SSN = employeeViewModel.SSN;
             employee.CreatedBy = employeeViewModel.CreatedBy;
             employee.ModifiedBy = employeeViewModel.ModifiedBy;
+            employee.DeptId = employeeViewModel.DeptId;
 
             _unitOfWork.Employees.UpdateEmployee(employee);
             _unitOfWork.Complete();
@@ -143,7 +156,6 @@ namespace RepositoryPattern.Controllers
             _unitOfWork.Employees.DeleteEmployee(employee);
             _unitOfWork.Complete();
             return RedirectToAction("Index", "Employees");
-
         }
     }
 }

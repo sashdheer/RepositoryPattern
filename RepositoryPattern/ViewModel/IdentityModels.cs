@@ -21,7 +21,8 @@ namespace RepositoryPattern.ViewModel
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Employee> Employees { get; set; }
+        //public DbSet<Employee> Employees { get; set; }
+      //  public DbSet<Department> Department { get; set; }
         public ApplicationDbContext()
             : base("SampleDB", throwIfV1Schema: false)
         {

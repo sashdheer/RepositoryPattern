@@ -5,14 +5,15 @@ using System.Web;
 using System.Data.Entity;
 using RepositoryPattern.Repository.Interface;
 using RepositoryPattern.ViewModel;
+using RepositoryPattern.Models;
 
 namespace RepositoryPattern.Repository.Implementation
 {
     public class GenericRepository<TEntity>:IGenericRepository<TEntity> where TEntity:class
     {
-        public ApplicationDbContext context;
+        public SampleDBEntities context;
         public DbSet<TEntity> dbset;
-        public GenericRepository(ApplicationDbContext context)
+        public GenericRepository(SampleDBEntities context)
         {
             this.context = context;
             dbset = context.Set<TEntity>();

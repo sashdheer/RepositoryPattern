@@ -196,6 +196,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -207,13 +208,35 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>SampleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Employee.cs">
+      <DependentUpon>SampleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SampleDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SampleDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SampleDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SampleDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\Implementation\DepartmentRepository.cs" />
+    <Compile Include="Repository\Interface\IDepartmentRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
-    <Compile Include="Models\Employee.cs" />
+    <Compile Include="ViewModel\DepartmentViewModel.cs" />
     <Compile Include="ViewModel\IdentityModels.cs" />
-    <Compile Include="Models\IUnitOfWork.cs" />
+    <Compile Include="Repository\IUnitOfWork.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
-    <Compile Include="Models\SampleDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Implementation\EmployeeRepository.cs" />
     <Compile Include="Repository\Implementation\GenericRepository.cs" />
@@ -233,6 +256,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\SampleDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleDB.edmx</DependentUpon>
+      <LastGenOutput>SampleDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SampleDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SampleDB.edmx</DependentUpon>
+      <LastGenOutput>SampleDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -255,6 +288,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <EntityDeploy Include="Models\SampleDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SampleDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\SampleDB.edmx.diagram">
+      <DependentUpon>SampleDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -322,6 +362,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Department\Create.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

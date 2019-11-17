@@ -1,17 +1,15 @@
-﻿using System;
+﻿using RepositoryPattern.Models;
+using RepositoryPattern.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using RepositoryPattern.Models;
-using RepositoryPattern.ViewModel;
 
 namespace RepositoryPattern.Repository.Implementation
 {
     public class EmployeeRepository :  GenericRepository<Employee>, IEmployeeRepository
     {
-        private readonly ApplicationDbContext _context;
+        private readonly SampleDBEntities _context;
 
-        public EmployeeRepository(ApplicationDbContext context) : base(context)
+        public EmployeeRepository(SampleDBEntities context) : base(context)
         {
             this._context = context;
         }

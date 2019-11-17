@@ -30,7 +30,8 @@ namespace RepositoryPattern.DependencyResolution {
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
-            For<Repository.IEmployeeRepository>().Use<Repository.Implementation.EmployeeRepository>();
+            For<Repository.Interface.IEmployeeRepository>().Use<Repository.Implementation.EmployeeRepository>();
+            For<Repository.Interface.IDepartmentRepository>().Use<Repository.Implementation.DepartmentRepository>();
         }
 
         #endregion

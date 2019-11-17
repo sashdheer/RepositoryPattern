@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RepositoryPattern.Models;
+﻿using RepositoryPattern.Models;
 using RepositoryPattern.Repository.Interface;
+using System.Collections.Generic;
 
-namespace RepositoryPattern.Repository
+namespace RepositoryPattern.Repository.Interface
 {
     public interface IEmployeeRepository : IGenericRepository<Employee>
     {

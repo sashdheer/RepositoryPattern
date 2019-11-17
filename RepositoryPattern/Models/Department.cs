@@ -12,18 +12,23 @@ namespace RepositoryPattern.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class Department
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string SSN { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Department()
+        {
+            this.Employees = new HashSet<Employee>();
+        }
+    
+        public int DeptId { get; set; }
+        public string Name { get; set; }
+        public string Location { get; set; }
         public Nullable<System.DateTime> CreatedDate { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
-        public int DeptId { get; set; }
     
-        public virtual Department Department { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }
