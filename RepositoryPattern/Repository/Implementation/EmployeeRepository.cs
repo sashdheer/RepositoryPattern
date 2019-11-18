@@ -18,9 +18,9 @@ namespace RepositoryPattern.Repository.Implementation
         /// Get all available employees
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<Employee> GetEmployees()
+        public IQueryable<Employee> GetEmployees()
         {
-            return GetAll().ToList();
+            return GetAll().AsQueryable();
         }
 
         /// <summary>

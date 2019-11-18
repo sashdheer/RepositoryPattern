@@ -27,7 +27,5 @@ namespace RepositoryPattern.Models
     
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Employee> Employees { get; set; }
-
-        public System.Data.Entity.DbSet<RepositoryPattern.ViewModel.DepartmentViewModel> DepartmentViewModels { get; set; }
     }
 }

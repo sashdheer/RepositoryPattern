@@ -99,13 +99,15 @@ namespace RepositoryPattern.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int id)
         {
-            Employee employee =_unitOfWork.Employees.GetEmployee(id);
+            Employee employee = _unitOfWork.Employees.GetEmployee(id);
+
             if (employee == null)
             {
                 return HttpNotFound();
             }
 
             IEnumerable<Department> departments = _unitOfWork.Departments.GetDepartments();
+
             var deptList = new SelectList(departments.Select(dept => new { DeptId = dept.DeptId, Name = dept.Name }), "DeptId", "Name").ToList();
             
 
@@ -118,7 +120,8 @@ namespace RepositoryPattern.Controllers
                 SSN = employee.SSN,
                 CreatedBy = employee.CreatedBy,
                 ModifiedBy = employee.ModifiedBy,
-                DepartmentList = deptList
+                DepartmentList = deptList,
+                DeptId = employee.DeptId
         };
             return View("Edit", employeeViewModel);
         }

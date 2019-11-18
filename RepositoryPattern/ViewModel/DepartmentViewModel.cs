@@ -18,7 +18,10 @@ namespace RepositoryPattern.ViewModel
         [Required(ErrorMessage = "Please enter a Location")]
         public string Location { get; set; }
 
+        [DisplayName("Created By")]
         public string CreatedBy { get; set; }
+
+        [DisplayName("Modified By")]
         public string ModifiedBy { get; set; }
         public string Heading { get; set; }
     }

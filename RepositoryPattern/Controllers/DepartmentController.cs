@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace RepositoryPattern.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         // GET: Department
